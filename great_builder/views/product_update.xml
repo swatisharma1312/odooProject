@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+     <record model="ir.ui.view" id="view_product_update_list">
+      <field name="name">product_update</field>
+      <field name="model">product.update</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="product_id"/>
+          <field name="note"/>
+          <field name="new_product_name"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="view_product_update_form">
+       <field name="name">product update</field>
+       <field name="model">product.update</field>
+       <field name="arch" type="xml">
+        <form>
+          <header>
+            <button name="button_change" string="Change" class="btn-primary"
+                    type="object"/>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="product_id"/>
+                <field name="new_product_name"/>
+              </group>
+              <group>
+                 <field name="note"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="product_update_action" model="ir.actions.act_window">
+        <field name="name">Product Update</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.update</field>
+      <field name="view_mode">tree,kanban,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add Product
+        </p>
+      </field>
+    </record>
+      <menuitem id="product_root"
+              name="Product Details"
+              sequence="10"/>
+
+      <menuitem id="product_details_root"
+              name="Products"
+              parent="product_root"
+              sequence="10"/>
+
+      <menuitem id="update_product"
+              name="Product Update"
+              parent="product_details_root"
+              action="product_update_action"
+              sequence="10"/>
+
+  </data>
+</odoo>

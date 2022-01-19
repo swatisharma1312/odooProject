@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.module.category" id="module_category_product_details">
+        <field name="name">Products Details</field>
+        <field name="description">Product</field>
+    </record>
+
+    <record id="product_update_user" model="res.groups">
+      <field name="name">Users</field>
+<!--      <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+      <field name="category_id" ref="module_category_product_details"/>
+    </record>
+
+    <record id="product_update_manager" model="res.groups">
+      <field name="name">Administrator</field>
+      <field name="category_id" ref="module_category_product_details"/>
+      <field name="implied_ids" eval="[(4, ref('product_update_user'))]"/>
+<!--      <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>-->
+    </record>
+  </data>
+</odoo>
